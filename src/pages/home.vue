@@ -1,0 +1,26 @@
+<!-- 主页面 -->
+<!-- 承载indexPage, productPage,detailPage，只需关注它们三个内部核心的内容开发即可 -->
+<!-- homePage为它们分出了结构 -->
+<template>
+  <div>
+    home
+    <!-- 复用了nav-header和nav-footer，剩下的页面部分嵌套到router-view里即可 -->
+    <nav-header></nav-header>
+    <router-view></router-view>
+    <nav-footer></nav-footer>
+  </div>
+</template>
+
+<script>
+import NavHeader from "./../components/NavHeader";
+import NavFooter from "./../components/NavFooter";
+export default {
+  name: "nav-home",
+  components: {
+    NavHeader,
+    NavFooter,
+  },
+};
+</script>
+
+<style></style>
