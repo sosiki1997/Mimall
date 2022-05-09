@@ -6,16 +6,25 @@
 </template>
 
 <script>
-import storage from "./storage";
 export default {
   name: "App",
   components: {},
+  data() {
+    return {
+      res: {},
+    };
+  },
   mounted() {
-    // storage.setItem("a", 1); //和user同级
-    // storage.setItem('user',{a:1})  //覆盖掉了重新写了个user
-    // storage.setItem("abc", { a: 1 }, "user"); //写在了user下
-    // storage.clear("a"); //跟user同级的a被删除
-    storage.clear("a", "user"); //删除user下面的a
+    // mock
+    // 本地加载请求静态json文件的形式
+    // this.axios.get("/mock/user/login.json").then((res) => {
+    //   this.res = res;
+    // });
+    // 通过easy-mock平台实现数据mock
+    // 本地集成mockjs实现数据mock  只有这种不会发请求，因为在发请求那一瞬间就被拦截了
+    this.axios.get("/user/login").then((res) => {
+      this.res = res;
+    });
   },
 };
 </script>
