@@ -1,3 +1,4 @@
+// CommonJS规范，vue.config.js给webpack用
 module.exports = {
   devServer: {
     host: "localhost",
