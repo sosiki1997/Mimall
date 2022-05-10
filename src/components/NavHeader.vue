@@ -1,5 +1,9 @@
 <template>
+<<<<<<< HEAD
   <div></div>
+=======
+  <div>nav-header</div>
+>>>>>>> mock
 </template>
 
 <script>
