@@ -3,7 +3,6 @@
 <!-- homePage为它们分出了结构 -->
 <template>
   <div>
-    home
     <!-- 复用了nav-header和nav-footer，剩下的页面部分嵌套到router-view里即可 -->
     <nav-header></nav-header>
     <router-view></router-view>

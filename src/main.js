@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-import { createApp } from 'vue'
-import App from './App.vue'
-
-createApp(App).mount('#app')
-=======
 // import预编译加载
 import Vue from "vue";
 import router from "./router";
@@ -56,4 +50,3 @@ new Vue({
   router,
   render: (h) => h(App),
 }).$mount("#app");
->>>>>>> mock

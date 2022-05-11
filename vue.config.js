@@ -1,17 +1,10 @@
-<<<<<<< HEAD
-const { defineConfig } = require("@vue/cli-service");
-module.exports = defineConfig({
-  transpileDependencies: true,
-});
-=======
-// CommonJS规范，vue.config.js给webpack用
 module.exports = {
   devServer: {
     host: "localhost",
     port: 8080,
     proxy: {
       "/api": {
-        target: "http://mall-pre.springboot.cn",
+        target: "http://mall-pre.springboot.cn", //后台接口地址
         changeOrigin: true,
         pathRewrite: {
           "/api": "",
@@ -28,4 +21,3 @@ module.exports = {
     config.plugins.delete("prefetch");
   },
 };
->>>>>>> mock
