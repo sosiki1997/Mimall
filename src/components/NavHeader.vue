@@ -41,6 +41,7 @@
                     </div>
                     <div class="pro-name">{{ item.name }}</div>
                     <div class="pro-price">{{ item.price | currency }}</div>
+                    <!-- currency 这个过滤器已被弃用 -->
                   </a>
                 </li>
               </ul>
