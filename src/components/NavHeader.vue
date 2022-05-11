@@ -204,6 +204,7 @@ export default {
             // 覆盖里层元素的阴影
             z-index: 10;
             transition: all 0.5s;
+            background-color: #ffffff;
             .product {
               position: relative;
               float: left;
