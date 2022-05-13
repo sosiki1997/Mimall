@@ -4,6 +4,7 @@ import router from "./router";
 import axios from "axios";
 // vue-axios把作用域对象挂载到vue实例上去，方便用this去调用
 import VueAxios from "vue-axios";
+import VueLazyLoad from "vue-lazyload";
 // 插件放上面，组件放下面
 import App from "./App.vue";
 // import env from "./env";
@@ -43,6 +44,9 @@ axios.interceptors.response.use(function (response) {
 });
 
 Vue.use(VueAxios, axios);
+Vue.use(VueLazyLoad, {
+  loading: "/imgs/loading-svg/loading-bars.svg", //加载时的loading动画
+});
 
 Vue.config.productionTip = false;
 
