@@ -5,6 +5,10 @@ import axios from "axios";
 // vue-axios把作用域对象挂载到vue实例上去，方便用this去调用
 import VueAxios from "vue-axios";
 import VueLazyLoad from "vue-lazyload";
+import VueCookie from "vue-cookie";
+import { Message } from "element-ui";
+import "element-ui/lib/theme-chalk/index.css";
+import store from "./store";
 // 插件放上面，组件放下面
 import App from "./App.vue";
 // import env from "./env";
@@ -18,7 +22,7 @@ import App from "./App.vue";
 */
 
 // mock开关
-const mock = true;
+const mock = false;
 if (mock) {
   require("./mock/api"); //执行时加载
 }
@@ -29,28 +33,46 @@ axios.defaults.timeout = 8000;
 // 根据环境变量获取不同的请求地址
 // axios.defaults.baseURL = env.baseURL;
 // 接口拦截
-axios.interceptors.response.use(function (response) {
-  let res = response.data; //取到接口返回的值
-  // 成功
-  if (res.status == 0) {
-    return res.data;
-    // 登录拦截
-  } else if (res.status == 10) {
-    window.location.href = "/#/login";
-    // 弹出错误信息
-  } else {
-    alert(res.msg);
+axios.interceptors.response.use(
+  function (response) {
+    let res = response.data; //取到接口返回的值
+    // 在首页时 不进行登录跳转
+    let path = location.hash;
+    // 成功
+    if (res.status == 0) {
+      return res.data;
+      // 登录拦截
+    } else if (res.status == 10) {
+      if (path != "#/index") {
+        window.location.href = "/#/login";
+      }
+      // 接口错误拦截 根据业务逻辑
+      return Promise.reject(res);
+      // 弹出错误信息
+    } else {
+      Message.warning(res.msg);
+      // 抛出异常
+      return Promise.reject(res);
+    }
+  },
+  // 服务器状态码http错误拦截
+  (error) => {
+    let res = error.response;
+    Message.error(res.data.message);
+    return Promise.reject(error);
   }
-});
+);
 
 Vue.use(VueAxios, axios);
+Vue.use(VueCookie);
 Vue.use(VueLazyLoad, {
   loading: "/imgs/loading-svg/loading-bars.svg", //加载时的loading动画
 });
-
+Vue.prototype.$message = Message;
 Vue.config.productionTip = false;
 
 new Vue({
+  store,
   router,
   render: (h) => h(App),
 }).$mount("#app");

@@ -4,14 +4,6 @@
       <img src="/imgs/logo-footer.png" alt="" />
       <p>小米商城</p>
     </div>
-    <div class="footer-link">
-      <a href="https://www.mi.com/?masid=2701.0313" target="_blank">小米商城</a>
-      <span> | </span> <a href="">MIUI</a><span> | </span> <a href="">米家</a
-      ><span> | </span> <a href="">米聊</a><span> | </span> <a href="">多看</a
-      ><span> | </span>
-      <a href="">小米天猫店</a>
-    </div>
-    <div class="copyright">copyright @2022⛽️</div>
   </div>
 </template>
 
